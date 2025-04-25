@@ -1,58 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Introduction Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-        main {
-            padding: 2rem;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Krutik Kikani | Portfolio</title>
+  <style>
+    : root {
+      --bg-color: #f4f4f4;
+      --text-color: #333;
+      --accent-color: #4CAF50;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    header {
+      background-color: var(--accent-color);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      padding: 1rem;
+    }
+    .toggle, .color-picker {
+      padding: 0.5rem 0.8rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      color: #fff;
+      cursor: pointer;
+    }
+    .toggle {
+      background-color: #333;
+    }
+    .color-picker {
+      background-color: var(--accent-color);
+    }
+
+    main {
+      padding: 2rem;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+
+    ul li {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      list-style: none;
+      background-color: #ddd;
+      border-radius: 8px;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+    ul li:hover {
+      transform: scale(1.05);
+      background-color: #bbb;
+    }
+
+    @media (max-width: 600px) {
+      .controls {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
-   >
-    <main>
-        <h2>About Me</h2>
-        <p>Hi,Welcome to my space! I'm Krutik Kikani, and I thrive at the crossroads of technology and impact. Fueled by an unwavering curiosity and a drive for excellence, I explore, innovate, and create solutions that turn possibilities into realities. Whether it's diving into emerging tech, crafting groundbreaking ideas, or delivering measurable outcomes, I believe in harnessing the power of technology to make meaningful contributions to the world.</p>
-        <h2>My Skills</h2>
-        <ul>
-            <li> 1.Technological Expertise: Mastery of cutting-edge technologies, from software development to emerging fields like AI and IoT, demonstrating your innovative edge.</li>
-            <li>2. Problem-Solving Excellence: A results-oriented approach to tackling complex challenges, turning ideas into actionable solutions that drive success.</li>
-            <li>3.Strategic Vision: The ability to foresee trends, align technological advancements with business goals, and lead projects to tangible outcomes.</li>
-        </ul>
-        <h2>Contact Me</h2>
-        <p>You can reach me at <a href="mailto:your.email@example.com">kikanikrutik5661@gmail.com</a>.</p>
-    </main>
-    <footer>
-        <p>&copy; 2025 Krutik Kikani. All rights reserved.</p>
-    </footer>
+
+  <header>
+    <h1>Portfolio</h1>
+  </header>
+
+  <div class="controls">
+    <button class="color-picker" onclick="changeAccentColor()">🎨 Try Me</button>
+    <button class="toggle" onclick="toggleDarkMode()">🌓 Theme</button>
+  </div>
+
+  <main>
+    <h2>About Me</h2>
+    <p>Hi, I’m Krutik Kikani! I thrive at the crossroads of technology and creativity. Let's explore innovation together!</p>
+
+    <h2>My Skills</h2>
+    <ul>
+      <li>Technological Expertise</li>
+      <li>Problem-Solving Excellence</li>
+      <li>Strategic Vision</li>
+    </ul>
+
+    <h2>Projects</h2>
+    <p><em>Coming soon...</em></p>
+
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:kikanikrutik5661@gmail.com">kikanikrutik5661@gmail.com</a></p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Krutik Kikani. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      const isDark = document.body.style.getPropertyValue('--bg-color') === '#333';
+      if (isDark) {
+        document.body.style.setProperty('--bg-color', '#f4f4f4');
+        document.body.style.setProperty('--text-color', '#333');
+      } else {
+        document.body.style.setProperty('--bg-color', '#333');
+        document.body.style.setProperty('--text-color', '#fff');
+      }
+    }
+
+    function changeAccentColor() {
+      const colors = ['#4CAF50', '#2196F3', '#E91E63', '#FF9800', '#9C27B0'];
+      const current = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim();
+      let nextColor = colors[(colors.indexOf(current) + 1) % colors.length];
+      document.documentElement.style.setProperty('--accent-color', nextColor);
+    }
+  </script>
+
 </body>
 </html>
-
-
-
-
